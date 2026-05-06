@@ -1,0 +1,319 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="MTH VOYAGE - Votre voyage, notre mission">
+<title>MTH VOYAGE</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+
+<!-- TOP HEADER -->
+<div class="top-bar">
+
+<div class="top-left">
+<span><i class="fas fa-phone"></i> +221 78 563 58 06</span>
+<span><i class="fas fa-envelope"></i> contact@mthvoyage.com</span>
+<span><i class="fas fa-clock"></i> Lun - Sam : 8h00 - 20h00</span>
+</div>
+
+<div class="top-right">
+<span>Suivez-nous :</span>
+<a href="#"><i class="fab fa-facebook-f"></i></a>
+<a href="#"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-tiktok"></i></a>
+</div>
+
+</div>
+
+<!-- NAVBAR -->
+<header class="header">
+
+<a href="#home" class="logo">
+<img src="logo.png" alt="MTH VOYAGE">
+</a>
+
+<nav class="navbar" id="navbar">
+
+<a href="#home">Accueil</a>
+<a href="#booking">Billets d’avion</a>
+<a href="#hotels">Hôtels</a>
+<a href="#cars">Voitures</a>
+<a href="#insurance">Assurance voyage</a>
+<a href="#about">À propos</a>
+<a href="#contact">Contact</a>
+
+</nav>
+
+<div class="nav-right">
+
+<a href="https://wa.me/221785635806" class="quote-btn" target="_blank">
+<i class="fab fa-whatsapp"></i> Demande rapide
+</a>
+
+<div class="menu-toggle" id="menuToggle">
+<i class="fas fa-bars"></i>
+</div>
+
+</div>
+
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+
+<div class="hero-left">
+
+<h1>Voyagez partout<br>dans le monde</h1>
+
+<p>
+MTH VOYAGE s’occupe de tout : billets d’avion,
+hôtels, voiture et assurance.
+Votre voyage, notre mission.
+</p>
+
+<div class="hero-features">
+
+<div><i class="fas fa-check-circle"></i> Meilleurs prix garantis</div>
+<div><i class="fas fa-bolt"></i> Réservation rapide</div>
+<div><i class="fas fa-headset"></i> Assistance 24h/24</div>
+
+</div>
+
+<a href="https://wa.me/221785635806" target="_blank" class="hero-btn">
+<i class="fab fa-whatsapp"></i> Discutez avec nous
+</a>
+
+</div>
+
+<div class="hero-right">
+<img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&q=80" alt="">
+</div>
+
+</section>
+
+<!-- SEARCH BOX -->
+<section class="booking-section" id="booking">
+
+<div class="booking-box">
+
+<div class="booking-tabs">
+
+<button class="tab active">✈ Billets d’avion</button>
+<button class="tab">🏨 Hôtels</button>
+<button class="tab">🚘 Voitures</button>
+<button class="tab">🛡 Assurance voyage</button>
+
+</div>
+
+<form id="bookingForm">
+
+<div class="booking-grid">
+
+<select id="ticketType">
+<option>Aller-retour</option>
+<option>Aller simple</option>
+</select>
+
+<select id="passengers">
+<option>1 Passager</option>
+<option>2 Passagers</option>
+<option>3 Passagers</option>
+<option>4+ Passagers</option>
+</select>
+
+<select id="travelClass">
+<option>Économique</option>
+<option>Business</option>
+</select>
+
+<input type="text" id="from" placeholder="Dakar (DKR)">
+<input type="text" id="to" placeholder="Paris (PAR)">
+
+<input type="date" id="departDate">
+<input type="date" id="returnDate">
+
+<button type="submit" class="search-btn">
+<i class="fas fa-search"></i> Rechercher un vol
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+</section>
+
+<!-- SERVICES -->
+<section class="services">
+
+<h2 class="section-title">Nos services</h2>
+
+<div class="service-grid">
+
+<div class="service-card">
+<img src="https://images.unsplash.com/photo-1542296332-2e4473faf563?auto=format&fit=crop&w=600&q=80">
+<div class="icon-circle"><i class="fas fa-plane"></i></div>
+<h3>Billets d’avion</h3>
+<p>Nous trouvons les meilleurs vols au meilleur prix.</p>
+<a href="#">En savoir plus →</a>
+</div>
+
+<div class="service-card">
+<img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80">
+<div class="icon-circle"><i class="fas fa-hotel"></i></div>
+<h3>Réservation d’hôtels</h3>
+<p>Des hôtels de qualité partout dans le monde.</p>
+<a href="#">En savoir plus →</a>
+</div>
+
+<div class="service-card">
+<img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&q=80">
+<div class="icon-circle"><i class="fas fa-car"></i></div>
+<h3>Location de voiture</h3>
+<p>Voitures confortables avec ou sans chauffeur.</p>
+<a href="#">En savoir plus →</a>
+</div>
+
+<div class="service-card">
+<img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=600&q=80">
+<div class="icon-circle"><i class="fas fa-shield-alt"></i></div>
+<h3>Assurance voyage</h3>
+<p>Voyagez sereinement partout.</p>
+<a href="#">En savoir plus →</a>
+</div>
+
+</div>
+
+</section>
+
+<!-- DESTINATIONS -->
+<section class="destinations">
+
+<div class="title-row">
+<h2 class="section-title left">Destinations populaires</h2>
+<a href="#" class="outline-btn">Voir toutes les destinations</a>
+</div>
+
+<div class="destination-grid">
+
+<div class="destination-card"><h3>France</h3><p>À partir de 280 000 FCFA</p></div>
+<div class="destination-card"><h3>Italie</h3><p>À partir de 310 000 FCFA</p></div>
+<div class="destination-card"><h3>Angleterre</h3><p>À partir de 320 000 FCFA</p></div>
+<div class="destination-card"><h3>Brésil</h3><p>À partir de 450 000 FCFA</p></div>
+<div class="destination-card"><h3>Maroc</h3><p>À partir de 120 000 FCFA</p></div>
+
+</div>
+
+</section>
+
+<!-- TRUST -->
+<section class="trust">
+
+<div class="trust-grid">
+
+<div>
+<i class="fas fa-headset"></i>
+<h3>Assistance 24h/24</h3>
+<p>Disponible à tout moment.</p>
+</div>
+
+<div>
+<i class="fas fa-lock"></i>
+<h3>Paiement sécurisé</h3>
+<p>Paiements protégés.</p>
+</div>
+
+<div>
+<i class="fas fa-medal"></i>
+<h3>Meilleurs prix</h3>
+<p>Tarifs compétitifs.</p>
+</div>
+
+<div>
+<i class="fas fa-users"></i>
+<h3>Satisfaction client</h3>
+<p>Des milliers de clients heureux.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- CTA -->
+<section class="cta">
+
+<div class="cta-box">
+
+<div>
+<h2>Prêt à voyager ?</h2>
+<p>Contactez-nous maintenant et obtenez votre offre personnalisée.</p>
+</div>
+
+<a href="https://wa.me/221785635806" target="_blank" class="hero-btn">
+<i class="fab fa-whatsapp"></i> Demander une offre sur WhatsApp
+</a>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" id="contact">
+
+<div class="footer-grid">
+
+<div>
+<img src="logo.png" class="footer-logo">
+<p>MTH VOYAGE est votre partenaire de confiance.</p>
+</div>
+
+<div>
+<h4>Liens utiles</h4>
+<a href="#">Accueil</a>
+<a href="#">Billets</a>
+<a href="#">Hôtels</a>
+<a href="#">Voitures</a>
+</div>
+
+<div>
+<h4>Informations</h4>
+<a href="#">À propos</a>
+<a href="#">Conditions</a>
+<a href="#">FAQ</a>
+<a href="#">Contact</a>
+</div>
+
+<div>
+<h4>Contactez-nous</h4>
+<p>+221 78 563 58 06</p>
+<p>contact@mthvoyage.com</p>
+<p>Dakar - Sénégal</p>
+</div>
+
+</div>
+
+<div class="copyright">
+© 2026 MTH VOYAGE - Tous droits réservés.
+</div>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
+```
