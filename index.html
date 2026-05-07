@@ -320,9 +320,9 @@ footer{background:var(--dark);color:#8da8d4;padding:60px 20px 0;}
     <div class="topbar-right">
       <span>Suivez-nous :</span>
       <div class="topbar-socials">
-        <a href="#" title="Facebook">f</a>
-        <a href="#" title="Instagram">📷</a>
-        <a href="#" title="TikTok">🎵</a>
+        <a href="#" title="Facebook"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="#" title="Instagram"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" title="TikTok"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg></a>
       </div>
     </div>
   </div>
@@ -408,9 +408,33 @@ footer{background:var(--dark);color:#8da8d4;padding:60px 20px 0;}
         <label class="trip-opt selected"><input type="radio" name="tripType" value="aller-retour" checked onchange="tripChange(this)"> Aller-retour</label>
         <label class="trip-opt"><input type="radio" name="tripType" value="aller-simple" onchange="tripChange(this)"> Aller simple</label>
         <label class="trip-opt"><input type="radio" name="tripType" value="multi" onchange="tripChange(this)"> Multi-destinations</label>
-        <span style="margin-left:auto;font-size:13px;color:var(--gray);display:flex;align-items:center;gap:10px;">
-          <span>1 Passager</span> <span>Économique</span>
-        </span>
+        <div style="margin-left:auto;display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+          <div style="position:relative;">
+            <button onclick="togglePax(event)" id="paxBtn" style="background:#f5f7fa;border:1.5px solid #e0e8f5;border-radius:10px;padding:8px 14px;font-family:'DM Sans',sans-serif;font-size:13.5px;font-weight:600;color:var(--navy);cursor:pointer;display:flex;align-items:center;gap:6px;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <span id="paxLabel">1 Passager</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div id="paxDropdown" style="display:none;position:absolute;top:calc(100% + 6px);right:0;background:white;border-radius:14px;box-shadow:0 8px 40px rgba(13,27,62,.15);border:1px solid #e8ecf5;padding:16px 20px;min-width:210px;z-index:300;">
+              <div style="font-size:11px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">Nombre de passagers</div>
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+                <div><div style="font-weight:600;font-size:14px;color:var(--navy);">Adultes</div><div style="font-size:11px;color:var(--gray);">12 ans et +</div></div>
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <button onclick="changePax(-1)" style="width:32px;height:32px;border-radius:50%;border:1.5px solid #e0e8f5;background:white;font-size:18px;cursor:pointer;font-weight:700;color:var(--navy);line-height:1;">−</button>
+                  <span id="paxCount" style="font-weight:800;font-size:17px;min-width:22px;text-align:center;color:var(--navy);">1</span>
+                  <button onclick="changePax(1)" style="width:32px;height:32px;border-radius:50%;border:none;background:var(--gold);font-size:18px;cursor:pointer;font-weight:700;color:var(--navy);line-height:1;">+</button>
+                </div>
+              </div>
+              <button onclick="confirmPax()" style="width:100%;background:var(--navy);color:white;border:none;border-radius:8px;padding:9px;font-weight:600;cursor:pointer;font-size:13px;">Confirmer</button>
+            </div>
+          </div>
+          <select id="cabinClass" style="background:#f5f7fa;border:1.5px solid #e0e8f5;border-radius:10px;padding:8px 14px;font-family:'DM Sans',sans-serif;font-size:13.5px;font-weight:600;color:var(--navy);cursor:pointer;outline:none;appearance:auto;">
+            <option value="economique">✈ Économique</option>
+            <option value="premium-eco">⭐ Premium Éco</option>
+            <option value="affaires">💼 Affaires</option>
+            <option value="premiere">👑 Première classe</option>
+          </select>
+        </div>
       </div>
       <div class="search-fields">
         <div class="field-group" style="position:relative;">
@@ -465,7 +489,7 @@ footer{background:var(--dark);color:#8da8d4;padding:60px 20px 0;}
       <div class="srv-card fade-up">
         <div class="srv-img">
           <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=80" alt="Billets d'avion">
-          <div class="srv-icon-wrap">✈️</div>
+          <div class="srv-icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg></div>
         </div>
         <div class="srv-body">
           <div class="srv-name">Billets d'avion</div>
@@ -476,7 +500,7 @@ footer{background:var(--dark);color:#8da8d4;padding:60px 20px 0;}
       <div class="srv-card fade-up">
         <div class="srv-img">
           <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&q=80" alt="Hôtels">
-          <div class="srv-icon-wrap">🏨</div>
+          <div class="srv-icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
         </div>
         <div class="srv-body">
           <div class="srv-name">Réservation d'hôtels</div>
@@ -487,7 +511,7 @@ footer{background:var(--dark);color:#8da8d4;padding:60px 20px 0;}
       <div class="srv-card fade-up">
         <div class="srv-img">
           <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=400&q=80" alt="Voitures">
-          <div class="srv-icon-wrap">🚗</div>
+          <div class="srv-icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v5a2 2 0 0 1-2 2h-2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg></div>
         </div>
         <div class="srv-body">
           <div class="srv-name">Location de voiture</div>
@@ -497,8 +521,8 @@ footer{background:var(--dark);color:#8da8d4;padding:60px 20px 0;}
       </div>
       <div class="srv-card fade-up">
         <div class="srv-img">
-          <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=80" alt="Assurance">
-          <div class="srv-icon-wrap">🛡️</div>
+          <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&q=80" alt="Assurance">
+          <div class="srv-icon-wrap"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
         </div>
         <div class="srv-body">
           <div class="srv-name">Assurance voyage</div>
@@ -727,7 +751,10 @@ footer{background:var(--dark);color:#8da8d4;padding:60px 20px 0;}
       </div>
       <p class="footer-desc">MTH VOYAGE est votre partenaire de confiance pour tous vos voyages. Nous vous accompagnons de A à Z pour une expérience inoubliable.</p>
       <div class="footer-socials">
-        <a href="#">f</a><a href="#">📷</a><a href="#">🎵</a><a href="#">▶</a>
+        <a href="#" title="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="#" title="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" title="TikTok"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg></a>
+        <a href="#" title="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg></a>
       </div>
     </div>
     <div class="footer-col">
@@ -757,7 +784,10 @@ footer{background:var(--dark);color:#8da8d4;padding:60px 20px 0;}
       <div class="footer-contact-item"><span>📍</span>Sacré-Cœur 3, Dakar – Sénégal</div>
       <h4 style="margin-top:20px;">Suivez-nous</h4>
       <div class="footer-socials">
-        <a href="#">f</a><a href="#">📷</a><a href="#">🎵</a><a href="#">▶</a>
+        <a href="#" title="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="#" title="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" title="TikTok"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg></a>
+        <a href="#" title="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg></a>
       </div>
     </div>
   </div>
@@ -772,6 +802,28 @@ footer{background:var(--dark);color:#8da8d4;padding:60px 20px 0;}
 </a>
 
 <script>
+// ============ PASSENGERS DROPDOWN ============
+let paxNum = 1;
+function togglePax(e) {
+  if(e) e.stopPropagation();
+  const d = document.getElementById('paxDropdown');
+  d.style.display = d.style.display === 'none' ? 'block' : 'none';
+}
+function changePax(delta) {
+  paxNum = Math.max(1, Math.min(9, paxNum + delta));
+  document.getElementById('paxCount').textContent = paxNum;
+}
+function confirmPax() {
+  document.getElementById('paxLabel').textContent = paxNum + ' Passager' + (paxNum > 1 ? 's' : '');
+  document.getElementById('paxDropdown').style.display = 'none';
+}
+document.addEventListener('click', function(e) {
+  const dd = document.getElementById('paxDropdown');
+  if (dd && !dd.contains(e.target) && e.target.id !== 'paxBtn' && !document.getElementById('paxBtn').contains(e.target)) {
+    dd.style.display = 'none';
+  }
+});
+
 // ============ AIRPORTS AUTOCOMPLETE ============
 const airports = [
   {code:'DKR',name:'Dakar',country:'Sénégal',flag:'🇸🇳'},
@@ -889,7 +941,9 @@ function startSearch() {
   const depart = document.getElementById('departDate').value;
   const retour = document.getElementById('returnDate').value;
   const tripType = document.querySelector('input[name="tripType"]:checked').value;
-  stepData = { dep, dest, depart, retour, tripType, transfer:'', bagages:'', assurance:'', hotel:'' };
+  const cabin = document.getElementById('cabinClass').value;
+  const cabinLabels = {economique:'Économique', 'premium-eco':'Premium Économique', affaires:'Affaires', premiere:'Première classe'};
+  stepData = { dep, dest, depart, retour, tripType, passagers: paxNum, classe: cabinLabels[cabin] || cabin, transfer:'', bagages:'', assurance:'', hotel:'' };
   const flow = document.getElementById('stepsFlow');
   flow.style.display = 'block';
   flow.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -1036,6 +1090,8 @@ function renderFinal() {
     ['✈️ Trajet', `${stepData.dep} → ${stepData.dest}`],
     ['📅 Départ', stepData.depart || '—'],
     ['📅 Retour', stepData.tripType === 'aller-simple' ? 'Aller simple' : (stepData.retour || '—')],
+    ['👤 Passagers', stepData.passagers + ' passager' + (stepData.passagers > 1 ? 's' : '')],
+    ['💺 Classe', stepData.classe],
     ['🚗 Transfert', stepData.transfer || 'Non'],
     ['🧳 Bagages', stepData.bagages || 'Non'],
     ['🛡️ Assurance', stepData.assurance || 'Non'],
@@ -1107,6 +1163,8 @@ function sendToWhatsApp() {
 📅 Date de départ : ${stepData.depart || 'Non précisée'}
 📅 Date de retour : ${stepData.tripType === 'aller-simple' ? 'Aller simple' : (stepData.retour || 'Non précisée')}
 🔄 Type : ${stepData.tripType}
+👤 Passagers : ${stepData.passagers} passager${stepData.passagers > 1 ? 's' : ''}
+💺 Classe : ${stepData.classe}
 
 🚗 Transfert aéroport : ${stepData.transfer || 'Non'}
 🧳 Bagages supplémentaires : ${stepData.bagages || 'Non'}
@@ -1139,4 +1197,3 @@ document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
-
