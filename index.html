@@ -4,8 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="MTH VOYAGE - Votre voyage, notre mission">
 <title>MTH VOYAGE</title>
+<meta name="description" content="Billets d'avion, hôtels, transferts et voyages premium.">
 
 <link rel="stylesheet" href="style.css">
 
@@ -20,17 +20,17 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 </head>
 <body>
 
-<!-- TOP HEADER -->
+<!-- ================= TOP BAR ================= -->
+
 <div class="top-bar">
 
 <div class="top-left">
 <span><i class="fas fa-phone"></i> +221 78 563 58 06</span>
 <span><i class="fas fa-envelope"></i> contact@mthvoyage.com</span>
-<span><i class="fas fa-clock"></i> Lun - Sam : 8h00 - 20h00</span>
+<span><i class="fas fa-clock"></i> Lun - Sam : 08h00 - 20h00</span>
 </div>
 
 <div class="top-right">
-<span>Suivez-nous :</span>
 <a href="#"><i class="fab fa-facebook-f"></i></a>
 <a href="#"><i class="fab fa-instagram"></i></a>
 <a href="#"><i class="fab fa-tiktok"></i></a>
@@ -38,7 +38,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 
 </div>
 
-<!-- NAVBAR -->
+<!-- ================= HEADER ================= -->
+
 <header class="header">
 
 <a href="#home" class="logo">
@@ -48,19 +49,17 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 <nav class="navbar" id="navbar">
 
 <a href="#home">Accueil</a>
-<a href="#booking">Billets d’avion</a>
-<a href="#hotels">Hôtels</a>
-<a href="#cars">Voitures</a>
-<a href="#insurance">Assurance voyage</a>
-<a href="#about">À propos</a>
+<a href="#search">Billets</a>
+<a href="#services">Services</a>
+<a href="#destinations">Destinations</a>
 <a href="#contact">Contact</a>
 
 </nav>
 
-<div class="nav-right">
+<div class="header-right">
 
-<a href="https://wa.me/221785635806" class="quote-btn" target="_blank">
-<i class="fab fa-whatsapp"></i> Demande rapide
+<a href="https://wa.me/221785635806" target="_blank" class="whatsapp-btn">
+<i class="fab fa-whatsapp"></i> WhatsApp
 </a>
 
 <div class="menu-toggle" id="menuToggle">
@@ -71,62 +70,136 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 
 </header>
 
-<!-- HERO -->
+<!-- ================= HERO ================= -->
+
 <section class="hero" id="home">
 
 <div class="hero-left">
 
-<h1>Voyagez partout<br>dans le monde</h1>
+<h1>Voyagez partout dans le monde facilement</h1>
 
 <p>
-MTH VOYAGE s’occupe de tout : billets d’avion,
-hôtels, voiture et assurance.
-Votre voyage, notre mission.
+Billets d’avion, hôtels, voiture et bagages
+en un seul endroit. Votre voyage, notre mission.
 </p>
 
-<div class="hero-features">
+<div class="hero-list">
 
-<div><i class="fas fa-check-circle"></i> Meilleurs prix garantis</div>
-<div><i class="fas fa-bolt"></i> Réservation rapide</div>
-<div><i class="fas fa-headset"></i> Assistance 24h/24</div>
+<div><i class="fas fa-check-circle"></i> Réservation rapide</div>
+<div><i class="fas fa-check-circle"></i> Assistance directe</div>
+<div><i class="fas fa-check-circle"></i> Service fiable</div>
 
 </div>
 
-<a href="https://wa.me/221785635806" target="_blank" class="hero-btn">
-<i class="fab fa-whatsapp"></i> Discutez avec nous
+<a href="#search" class="gold-btn">
+Réserver maintenant
 </a>
 
 </div>
 
 <div class="hero-right">
-<img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&q=80" alt="">
+
+<img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&q=80">
+
 </div>
 
 </section>
 
-<!-- SEARCH BOX -->
-<section class="booking-section" id="booking">
+<!-- ================= SEARCH ================= -->
 
-<div class="booking-box">
+<section class="search-section" id="search">
 
-<div class="booking-tabs">
+<div class="search-box">
 
-<button class="tab active">✈ Billets d’avion</button>
-<button class="tab">🏨 Hôtels</button>
-<button class="tab">🚘 Voitures</button>
-<button class="tab">🛡 Assurance voyage</button>
+<h2>Rechercher un vol</h2>
 
-</div>
+<form id="flightForm">
 
-<form id="bookingForm">
+<div class="search-grid">
 
-<div class="booking-grid">
-
-<select id="ticketType">
-<option>Aller-retour</option>
-<option>Aller simple</option>
+<!-- type billet -->
+<select id="tripType">
+<option value="roundtrip">Aller-retour</option>
+<option value="oneway">Aller simple</option>
 </select>
 
+<!-- depart -->
+<select id="fromAirport">
+
+<option value="Dakar - Blaise Diagne DSS">
+Dakar - Blaise Diagne DSS
+</option>
+
+<option value="Casablanca CMN">
+Casablanca CMN
+</option>
+
+<option value="Paris CDG">
+Paris CDG
+</option>
+
+</select>
+
+<!-- swap -->
+<button type="button" id="swapBtn" class="swap-btn">
+<i class="fas fa-right-left"></i>
+</button>
+
+<!-- destination -->
+<select id="toAirport">
+
+<option value="">Destination</option>
+
+<option>Paris CDG - France</option>
+<option>Paris ORY - France</option>
+<option>Milan MXP - Italie</option>
+<option>Rome FCO - Italie</option>
+<option>Madrid MAD - Espagne</option>
+<option>Barcelone BCN - Espagne</option>
+<option>Casablanca CMN - Maroc</option>
+<option>Marrakech RAK - Maroc</option>
+<option>Londres LHR - Angleterre</option>
+<option>New York JFK - USA</option>
+<option>Washington IAD - USA</option>
+<option>Bruxelles BRU - Belgique</option>
+<option>Berlin BER - Allemagne</option>
+<option>Istanbul IST - Turquie</option>
+<option>Dubai DXB - UAE</option>
+<option>Doha DOH - Qatar</option>
+<option>Montréal YUL - Canada</option>
+<option>Toronto YYZ - Canada</option>
+<option>Rio GIG - Brésil</option>
+<option>São Paulo GRU - Brésil</option>
+<option>Banjul BJL - Gambie</option>
+<option>Abidjan ABJ - Côte d'Ivoire</option>
+<option>Bamako BKO - Mali</option>
+<option>Conakry CKY - Guinée</option>
+<option>Nouakchott NKC - Mauritanie</option>
+<option>Tunis TUN - Tunisie</option>
+<option>Alger ALG - Algérie</option>
+<option>Cairo CAI - Égypte</option>
+<option>Jeddah JED - Arabie Saoudite</option>
+<option>Medina MED - Arabie Saoudite</option>
+<option>Johannesburg JNB - Afrique du Sud</option>
+<option>Nairobi NBO - Kenya</option>
+<option>Tokyo HND - Japon</option>
+<option>Bangkok BKK - Thaïlande</option>
+<option>Moscow SVO - Russie</option>
+<option>Lisbonne LIS - Portugal</option>
+<option>Amsterdam AMS - Pays-Bas</option>
+<option>Genève GVA - Suisse</option>
+<option>Zurich ZRH - Suisse</option>
+<option>Vienne VIE - Autriche</option>
+
+</select>
+
+<!-- depart date -->
+<input type="date" id="departDate">
+
+<!-- return date -->
+<input type="date" id="returnDate">
+
+<!-- passengers -->
 <select id="passengers">
 <option>1 Passager</option>
 <option>2 Passagers</option>
@@ -134,19 +207,14 @@ Votre voyage, notre mission.
 <option>4+ Passagers</option>
 </select>
 
+<!-- class -->
 <select id="travelClass">
 <option>Économique</option>
 <option>Business</option>
 </select>
 
-<input type="text" id="from" placeholder="Dakar (DKR)">
-<input type="text" id="to" placeholder="Paris (PAR)">
-
-<input type="date" id="departDate">
-<input type="date" id="returnDate">
-
 <button type="submit" class="search-btn">
-<i class="fas fa-search"></i> Rechercher un vol
+Rechercher un vol
 </button>
 
 </div>
@@ -157,157 +225,163 @@ Votre voyage, notre mission.
 
 </section>
 
-<!-- SERVICES -->
-<section class="services">
+<!-- ================= UPSELL MODAL ================= -->
 
-<h2 class="section-title">Nos services</h2>
+<section class="upsell-area" id="upsellArea">
 
-<div class="service-grid">
+<div class="upsell-box hidden" id="step1">
 
-<div class="service-card">
-<img src="https://images.unsplash.com/photo-1542296332-2e4473faf563?auto=format&fit=crop&w=600&q=80">
-<div class="icon-circle"><i class="fas fa-plane"></i></div>
-<h3>Billets d’avion</h3>
-<p>Nous trouvons les meilleurs vols au meilleur prix.</p>
-<a href="#">En savoir plus →</a>
+<h3>Besoin d’un transport ?</h3>
+
+<div class="choice-grid">
+
+<label><input type="checkbox" value="Taxi maison → Aéroport"> Taxi maison → Aéroport</label>
+
+<label><input type="checkbox" value="Chauffeur privé"> Chauffeur privé</label>
+
+<label><input type="checkbox" value="Location voiture destination"> Location voiture destination</label>
+
 </div>
 
-<div class="service-card">
-<img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80">
-<div class="icon-circle"><i class="fas fa-hotel"></i></div>
-<h3>Réservation d’hôtels</h3>
-<p>Des hôtels de qualité partout dans le monde.</p>
-<a href="#">En savoir plus →</a>
+<div class="step-buttons">
+<button class="skip-btn nextBtn">Ignorer</button>
+<button class="gold-btn nextBtn">Continuer</button>
 </div>
 
-<div class="service-card">
-<img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&q=80">
-<div class="icon-circle"><i class="fas fa-car"></i></div>
-<h3>Location de voiture</h3>
-<p>Voitures confortables avec ou sans chauffeur.</p>
-<a href="#">En savoir plus →</a>
 </div>
 
-<div class="service-card">
-<img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=600&q=80">
-<div class="icon-circle"><i class="fas fa-shield-alt"></i></div>
-<h3>Assurance voyage</h3>
-<p>Voyagez sereinement partout.</p>
-<a href="#">En savoir plus →</a>
+<div class="upsell-box hidden" id="step2">
+
+<h3>Besoin d’un hôtel ?</h3>
+
+<div class="choice-grid">
+
+<label><input type="radio" name="hotel" value="Hôtel 3 étoiles"> Hôtel 3 étoiles</label>
+
+<label><input type="radio" name="hotel" value="Hôtel 4 étoiles"> Hôtel 4 étoiles</label>
+
+<label><input type="radio" name="hotel" value="Hôtel 5 étoiles"> Hôtel 5 étoiles</label>
+
+</div>
+
+<div class="step-buttons">
+<button class="skip-btn nextBtn">Ignorer</button>
+<button class="gold-btn nextBtn">Continuer</button>
+</div>
+
+</div>
+
+<div class="upsell-box hidden" id="step3">
+
+<h3>Ajouter bagage supplémentaire ?</h3>
+
+<div class="choice-grid">
+
+<label><input type="radio" name="bagage" value="Oui"> Oui</label>
+<label><input type="radio" name="bagage" value="Non"> Non</label>
+
+</div>
+
+<div class="step-buttons">
+<button class="gold-btn" id="finishBtn">Valider</button>
 </div>
 
 </div>
 
 </section>
 
-<!-- DESTINATIONS -->
-<section class="destinations">
+<!-- ================= SERVICES ================= -->
+
+<section class="services" id="services">
+
+<h2 class="title">Nos Services</h2>
+
+<div class="cards">
+
+<div class="card">
+<i class="fas fa-plane"></i>
+<h3>Billets d’avion</h3>
+<p>Meilleurs prix disponibles.</p>
+</div>
+
+<div class="card">
+<i class="fas fa-hotel"></i>
+<h3>Hôtels</h3>
+<p>3 à 5 étoiles partout.</p>
+</div>
+
+<div class="card">
+<i class="fas fa-car"></i>
+<h3>Voitures</h3>
+<p>Transfert et location.</p>
+</div>
+
+<div class="card">
+<i class="fas fa-suitcase"></i>
+<h3>Bagages</h3>
+<p>Ajout bagages supplémentaires.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= DESTINATIONS ================= -->
+
+<section class="destinations" id="destinations">
 
 <div class="title-row">
-<h2 class="section-title left">Destinations populaires</h2>
-<a href="#" class="outline-btn">Voir toutes les destinations</a>
-</div>
 
-<div class="destination-grid">
+<h2 class="title left">Destinations populaires</h2>
 
-<div class="destination-card"><h3>France</h3><p>À partir de 280 000 FCFA</p></div>
-<div class="destination-card"><h3>Italie</h3><p>À partir de 310 000 FCFA</p></div>
-<div class="destination-card"><h3>Angleterre</h3><p>À partir de 320 000 FCFA</p></div>
-<div class="destination-card"><h3>Brésil</h3><p>À partir de 450 000 FCFA</p></div>
-<div class="destination-card"><h3>Maroc</h3><p>À partir de 120 000 FCFA</p></div>
-
-</div>
-
-</section>
-
-<!-- TRUST -->
-<section class="trust">
-
-<div class="trust-grid">
-
-<div>
-<i class="fas fa-headset"></i>
-<h3>Assistance 24h/24</h3>
-<p>Disponible à tout moment.</p>
-</div>
-
-<div>
-<i class="fas fa-lock"></i>
-<h3>Paiement sécurisé</h3>
-<p>Paiements protégés.</p>
-</div>
-
-<div>
-<i class="fas fa-medal"></i>
-<h3>Meilleurs prix</h3>
-<p>Tarifs compétitifs.</p>
-</div>
-
-<div>
-<i class="fas fa-users"></i>
-<h3>Satisfaction client</h3>
-<p>Des milliers de clients heureux.</p>
-</div>
-
-</div>
-
-</section>
-
-<!-- CTA -->
-<section class="cta">
-
-<div class="cta-box">
-
-<div>
-<h2>Prêt à voyager ?</h2>
-<p>Contactez-nous maintenant et obtenez votre offre personnalisée.</p>
-</div>
-
-<a href="https://wa.me/221785635806" target="_blank" class="hero-btn">
-<i class="fab fa-whatsapp"></i> Demander une offre sur WhatsApp
+<a href="#" class="outline-btn">
+Voir toutes les destinations
 </a>
 
 </div>
 
+<div class="destination-list">
+
+<div class="destination-card">France</div>
+<div class="destination-card">Italie</div>
+<div class="destination-card">Maroc</div>
+<div class="destination-card">Espagne</div>
+<div class="destination-card">USA</div>
+<div class="destination-card">Canada</div>
+
+</div>
+
 </section>
 
-<!-- FOOTER -->
+<!-- ================= CONTACT ================= -->
+
 <footer class="footer" id="contact">
 
 <div class="footer-grid">
 
 <div>
 <img src="logo.png" class="footer-logo">
-<p>MTH VOYAGE est votre partenaire de confiance.</p>
+<p>Votre partenaire voyage premium.</p>
 </div>
 
 <div>
-<h4>Liens utiles</h4>
-<a href="#">Accueil</a>
-<a href="#">Billets</a>
-<a href="#">Hôtels</a>
-<a href="#">Voitures</a>
-</div>
-
-<div>
-<h4>Informations</h4>
-<a href="#">À propos</a>
-<a href="#">Conditions</a>
-<a href="#">FAQ</a>
-<a href="#">Contact</a>
-</div>
-
-<div>
-<h4>Contactez-nous</h4>
+<h4>Contact</h4>
 <p>+221 78 563 58 06</p>
 <p>contact@mthvoyage.com</p>
 <p>Dakar - Sénégal</p>
 </div>
 
+<div>
+<h4>Services</h4>
+<p>Billets</p>
+<p>Hôtels</p>
+<p>Voitures</p>
 </div>
 
-<div class="copyright">
-© 2026 MTH VOYAGE - Tous droits réservés.
+</div>
+
+<div class="copy">
+© 2026 MTH VOYAGE
 </div>
 
 </footer>
@@ -316,4 +390,4 @@ Votre voyage, notre mission.
 
 </body>
 </html>
-```
+
