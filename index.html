@@ -1,393 +1,1093 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MTH VOYAGE</title>
-<meta name="description" content="Billets d'avion, hôtels, transferts et voyages premium.">
+<title>MTH VOYAGE - Voyagez partout dans le monde</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  :root {
+    --navy: #0d1b3e;
+    --gold: #c9922a;
+    --gold-light: #e5b04a;
+    --white: #ffffff;
+    --gray: #f5f6fa;
+    --text: #1a1a2e;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --whatsapp: #25d366;
+  }
 
-<link rel="stylesheet" href="style.css">
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  html { scroll-behavior: smooth; }
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    overflow-x: hidden;
+  }
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  /* ── TOP BAR ── */
+  .topbar {
+    background: var(--navy);
+    color: rgba(255,255,255,0.85);
+    font-size: 0.78rem;
+    padding: 6px 0;
+  }
+  .topbar .inner {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .topbar a { color: inherit; text-decoration: none; }
+  .topbar .left, .topbar .right { display: flex; gap: 18px; align-items: center; }
+  .topbar i { margin-right: 5px; color: var(--gold); }
+  .topbar .socials a { color: rgba(255,255,255,0.75); font-size: 0.85rem; }
+  .topbar .socials a:hover { color: var(--gold); }
 
+  /* ── NAVBAR ── */
+  nav {
+    background: #fff;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  .nav-inner {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    height: 68px;
+  }
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: var(--navy);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .logo span { color: var(--gold); }
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2px;
+    flex: 1;
+    justify-content: center;
+  }
+  .nav-links a {
+    color: var(--navy);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: all 0.2s;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+  .nav-links a:hover, .nav-links a.active {
+    color: var(--gold);
+  }
+  .btn-demande {
+    background: var(--gold);
+    color: #fff !important;
+    border-radius: 8px !important;
+    padding: 8px 18px !important;
+    font-weight: 600 !important;
+    white-space: nowrap;
+    transition: background 0.2s !important;
+  }
+  .btn-demande:hover { background: var(--gold-light) !important; }
+  .burger { display: none; cursor: pointer; font-size: 1.4rem; color: var(--navy); }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, #1a3a6e 60%, #0a2040 100%);
+    color: white;
+    padding: 80px 20px 60px;
+    position: relative;
+    overflow: hidden;
+    min-height: 480px;
+    display: flex;
+    align-items: center;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1600&q=80') center/cover no-repeat;
+    opacity: 0.18;
+  }
+  .hero-inner {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3.4rem);
+    font-weight: 900;
+    line-height: 1.15;
+    margin-bottom: 18px;
+  }
+  .hero p {
+    color: rgba(255,255,255,0.8);
+    font-size: 1rem;
+    line-height: 1.7;
+    max-width: 420px;
+    margin-bottom: 28px;
+  }
+  .hero-badges {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+  }
+  .badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.85);
+  }
+  .badge i { color: var(--gold); font-size: 1.1rem; }
+  .btn-wa {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--whatsapp);
+    color: white;
+    padding: 13px 26px;
+    border-radius: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+  }
+  .btn-wa:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(37,211,102,0.5); }
+  .hero-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .hero-img img {
+    max-width: 100%;
+    height: 280px;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
+    animation: float 4s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%,100% { transform: translateY(0) rotate(-3deg); }
+    50% { transform: translateY(-15px) rotate(-1deg); }
+  }
+
+  /* ── SEARCH BOX ── */
+  .search-section {
+    background: white;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+    border-radius: 16px;
+    max-width: 1100px;
+    margin: -36px auto 60px;
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+  }
+  .search-tabs {
+    display: flex;
+    background: var(--gray);
+    border-bottom: 1px solid var(--border);
+  }
+  .search-tab {
+    flex: 1;
+    padding: 16px 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s;
+    border: none;
+    background: transparent;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .search-tab.active {
+    background: var(--navy);
+    color: white;
+  }
+  .search-tab i { font-size: 1rem; }
+  .search-form {
+    padding: 24px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-end;
+    flex-wrap: wrap;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+    min-width: 130px;
+  }
+  .form-group label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .form-group select,
+  .form-group input {
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 0.9rem;
+    color: var(--text);
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+    background: white;
+  }
+  .form-group select:focus,
+  .form-group input:focus { border-color: var(--gold); }
+  .btn-search {
+    background: var(--gold);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 28px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+    transition: background 0.2s, transform 0.15s;
+    font-family: inherit;
+  }
+  .btn-search:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  /* ── SECTIONS ── */
+  section { padding: 70px 20px; }
+  .container { max-width: 1200px; margin: auto; }
+  .section-title {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .section-title h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 10px;
+  }
+  .section-title .underline {
+    width: 50px;
+    height: 3px;
+    background: var(--gold);
+    margin: 12px auto 0;
+    border-radius: 2px;
+  }
+
+  /* ── SERVICES ── */
+  .services { background: var(--gray); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 24px;
+  }
+  .service-card {
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .service-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(0,0,0,0.12); }
+  .service-card .img-wrap {
+    position: relative;
+    height: 160px;
+    overflow: hidden;
+  }
+  .service-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s;
+  }
+  .service-card:hover img { transform: scale(1.06); }
+  .service-icon {
+    position: absolute;
+    bottom: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 44px;
+    height: 44px;
+    background: var(--navy);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.1rem;
+    border: 3px solid white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  .service-body {
+    padding: 30px 20px 20px;
+    text-align: center;
+  }
+  .service-body h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 10px;
+  }
+  .service-body p {
+    font-size: 0.83rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+  .link-more {
+    color: var(--gold);
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .link-more:hover { color: var(--gold-light); }
+
+  /* ── DESTINATIONS ── */
+  .destinations { background: white; }
+  .destinations-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 36px;
+  }
+  .destinations-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .btn-voir {
+    border: 1.5px solid var(--gold);
+    color: var(--gold);
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.2s;
+  }
+  .btn-voir:hover { background: var(--gold); color: white; }
+  .dest-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+  }
+  .dest-card {
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+    transition: transform 0.25s;
+  }
+  .dest-card:hover { transform: translateY(-5px); }
+  .dest-card img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    transition: transform 0.4s;
+  }
+  .dest-card:hover img { transform: scale(1.08); }
+  .dest-flag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 26px;
+    height: 20px;
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    padding: 2px;
+  }
+  .dest-info {
+    padding: 12px 14px;
+    background: white;
+  }
+  .dest-info h4 {
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .dest-info .price {
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+  .dest-info .price span {
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  /* ── FEATURES ── */
+  .features {
+    background: var(--navy);
+    color: white;
+  }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+  }
+  .feature-item {
+    text-align: center;
+    padding: 20px;
+  }
+  .feature-item .icon {
+    width: 60px;
+    height: 60px;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 18px;
+    font-size: 1.4rem;
+    color: var(--gold);
+  }
+  .feature-item h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .feature-item p {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.6;
+  }
+
+  /* ── WHY US ── */
+  .why-us { background: var(--gray); }
+  .why-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  .why-img img {
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+  }
+  .why-points { display: flex; flex-direction: column; gap: 16px; }
+  .why-point {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  .why-point i { color: var(--gold); font-size: 1rem; width: 20px; }
+  .why-title h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 20px;
+  }
+  .btn-about {
+    display: inline-block;
+    background: var(--gold);
+    color: white;
+    padding: 12px 26px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.88rem;
+    text-decoration: none;
+    margin-top: 16px;
+    transition: background 0.2s;
+  }
+  .btn-about:hover { background: var(--gold-light); }
+  .testimonial-box {
+    background: var(--navy);
+    color: white;
+    border-radius: 16px;
+    padding: 28px;
+  }
+  .testimonial-box .quote {
+    font-size: 2.5rem;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .testimonial-box p {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.85);
+    font-style: italic;
+    margin-bottom: 18px;
+  }
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .testimonial-author img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--gold);
+  }
+  .testimonial-author .name { font-weight: 700; font-size: 0.88rem; }
+  .testimonial-author .role { font-size: 0.75rem; color: rgba(255,255,255,0.6); }
+
+  /* ── CTA ── */
+  .cta-section {
+    background: linear-gradient(135deg, var(--navy), #1a3a6e);
+    color: white;
+    padding: 50px 20px;
+    text-align: center;
+  }
+  .cta-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.9rem;
+    margin-bottom: 10px;
+  }
+  .cta-section p { color: rgba(255,255,255,0.7); margin-bottom: 24px; font-size: 0.95rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #08122a;
+    color: rgba(255,255,255,0.7);
+    padding: 56px 20px 20px;
+  }
+  .footer-grid {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .footer-brand .logo { color: white; font-size: 1.5rem; }
+  .footer-brand p { font-size: 0.82rem; line-height: 1.7; margin-top: 14px; }
+  footer h5 {
+    color: white;
+    font-size: 0.88rem;
+    font-weight: 700;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  footer ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  footer ul a {
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    font-size: 0.83rem;
+    transition: color 0.2s;
+  }
+  footer ul a:hover { color: var(--gold); }
+  .footer-contact p {
+    font-size: 0.82rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .footer-contact i { color: var(--gold); width: 16px; }
+  .footer-socials {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+  }
+  .footer-socials a {
+    width: 34px;
+    height: 34px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .footer-socials a:hover { background: var(--gold); }
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 20px auto 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.78rem;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .footer-bottom span { color: var(--gold); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-img { display: none; }
+    .dest-grid { grid-template-columns: repeat(3, 1fr); }
+    .features-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .why-inner { grid-template-columns: 1fr; }
+    .why-img { display: none; }
+  }
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .burger { display: block; }
+    .dest-grid { grid-template-columns: repeat(2, 1fr); }
+    .features-grid { grid-template-columns: 1fr 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .search-tabs { flex-wrap: wrap; }
+    .search-tab { flex: 1 1 40%; }
+    .nav-links.open {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 68px;
+      left: 0;
+      right: 0;
+      background: white;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      z-index: 999;
+    }
+  }
+</style>
 </head>
 <body>
 
-<!-- ================= TOP BAR ================= -->
-
-<div class="top-bar">
-
-<div class="top-left">
-<span><i class="fas fa-phone"></i> +221 78 563 58 06</span>
-<span><i class="fas fa-envelope"></i> contact@mthvoyage.com</span>
-<span><i class="fas fa-clock"></i> Lun - Sam : 08h00 - 20h00</span>
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="inner">
+    <div class="left">
+      <a href="tel:+221771234567"><i class="fas fa-phone"></i> +221 77 123 45 67</a>
+      <a href="mailto:contact@mthvoyage.com"><i class="fas fa-envelope"></i> contact@mthvoyage.com</a>
+      <span><i class="fas fa-clock"></i> Lun–Sam : 8h00–20h00</span>
+    </div>
+    <div class="right">
+      <span>Suivez-nous :</span>
+      <div class="socials">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" style="margin:0 8px"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-tiktok"></i></a>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="top-right">
-<a href="#"><i class="fab fa-facebook-f"></i></a>
-<a href="#"><i class="fab fa-instagram"></i></a>
-<a href="#"><i class="fab fa-tiktok"></i></a>
-</div>
-
-</div>
-
-<!-- ================= HEADER ================= -->
-
-<header class="header">
-
-<a href="#home" class="logo">
-<img src="logo.png" alt="MTH VOYAGE">
-</a>
-
-<nav class="navbar" id="navbar">
-
-<a href="#home">Accueil</a>
-<a href="#search">Billets</a>
-<a href="#services">Services</a>
-<a href="#destinations">Destinations</a>
-<a href="#contact">Contact</a>
-
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">MTH<span>VOYAGE</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#" class="active">Accueil</a></li>
+      <li><a href="#services">Billets d'avion</a></li>
+      <li><a href="#services">Hôtels</a></li>
+      <li><a href="#services">Voitures</a></li>
+      <li><a href="#services">Assurance voyage</a></li>
+      <li><a href="#why">À propos</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="https://wa.me/221771234567" class="btn-demande"><i class="fab fa-whatsapp"></i> Demande rapide</a></li>
+    </ul>
+    <div class="burger" onclick="toggleNav()"><i class="fas fa-bars"></i></div>
+  </div>
 </nav>
 
-<div class="header-right">
-
-<a href="https://wa.me/221785635806" target="_blank" class="whatsapp-btn">
-<i class="fab fa-whatsapp"></i> WhatsApp
-</a>
-
-<div class="menu-toggle" id="menuToggle">
-<i class="fas fa-bars"></i>
-</div>
-
-</div>
-
-</header>
-
-<!-- ================= HERO ================= -->
-
-<section class="hero" id="home">
-
-<div class="hero-left">
-
-<h1>Voyagez partout dans le monde facilement</h1>
-
-<p>
-Billets d’avion, hôtels, voiture et bagages
-en un seul endroit. Votre voyage, notre mission.
-</p>
-
-<div class="hero-list">
-
-<div><i class="fas fa-check-circle"></i> Réservation rapide</div>
-<div><i class="fas fa-check-circle"></i> Assistance directe</div>
-<div><i class="fas fa-check-circle"></i> Service fiable</div>
-
-</div>
-
-<a href="#search" class="gold-btn">
-Réserver maintenant
-</a>
-
-</div>
-
-<div class="hero-right">
-
-<img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&q=80">
-
-</div>
-
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <h1>Voyagez partout<br>dans le monde</h1>
+      <p>MTH VOYAGE s'occupe de tout : billets d'avion, hôtels, voiture et assurance. Votre voyage, notre mission.</p>
+      <div class="hero-badges">
+        <div class="badge"><i class="fas fa-tag"></i> Meilleurs prix garantis</div>
+        <div class="badge"><i class="fas fa-bolt"></i> Réservation rapide</div>
+        <div class="badge"><i class="fas fa-headset"></i> Assistance 24h/24 7j/7</div>
+      </div>
+      <a href="https://wa.me/221771234567" class="btn-wa" target="_blank">
+        <i class="fab fa-whatsapp" style="font-size:1.2rem"></i> Discutez avec nous
+      </a>
+    </div>
+    <div class="hero-img">
+      <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=700&q=80" alt="Avion" onerror="this.style.display='none'">
+    </div>
+  </div>
 </section>
 
-<!-- ================= SEARCH ================= -->
-
-<section class="search-section" id="search">
-
-<div class="search-box">
-
-<h2>Rechercher un vol</h2>
-
-<form id="flightForm">
-
-<div class="search-grid">
-
-<!-- type billet -->
-<select id="tripType">
-<option value="roundtrip">Aller-retour</option>
-<option value="oneway">Aller simple</option>
-</select>
-
-<!-- depart -->
-<select id="fromAirport">
-
-<option value="Dakar - Blaise Diagne DSS">
-Dakar - Blaise Diagne DSS
-</option>
-
-<option value="Casablanca CMN">
-Casablanca CMN
-</option>
-
-<option value="Paris CDG">
-Paris CDG
-</option>
-
-</select>
-
-<!-- swap -->
-<button type="button" id="swapBtn" class="swap-btn">
-<i class="fas fa-right-left"></i>
-</button>
-
-<!-- destination -->
-<select id="toAirport">
-
-<option value="">Destination</option>
-
-<option>Paris CDG - France</option>
-<option>Paris ORY - France</option>
-<option>Milan MXP - Italie</option>
-<option>Rome FCO - Italie</option>
-<option>Madrid MAD - Espagne</option>
-<option>Barcelone BCN - Espagne</option>
-<option>Casablanca CMN - Maroc</option>
-<option>Marrakech RAK - Maroc</option>
-<option>Londres LHR - Angleterre</option>
-<option>New York JFK - USA</option>
-<option>Washington IAD - USA</option>
-<option>Bruxelles BRU - Belgique</option>
-<option>Berlin BER - Allemagne</option>
-<option>Istanbul IST - Turquie</option>
-<option>Dubai DXB - UAE</option>
-<option>Doha DOH - Qatar</option>
-<option>Montréal YUL - Canada</option>
-<option>Toronto YYZ - Canada</option>
-<option>Rio GIG - Brésil</option>
-<option>São Paulo GRU - Brésil</option>
-<option>Banjul BJL - Gambie</option>
-<option>Abidjan ABJ - Côte d'Ivoire</option>
-<option>Bamako BKO - Mali</option>
-<option>Conakry CKY - Guinée</option>
-<option>Nouakchott NKC - Mauritanie</option>
-<option>Tunis TUN - Tunisie</option>
-<option>Alger ALG - Algérie</option>
-<option>Cairo CAI - Égypte</option>
-<option>Jeddah JED - Arabie Saoudite</option>
-<option>Medina MED - Arabie Saoudite</option>
-<option>Johannesburg JNB - Afrique du Sud</option>
-<option>Nairobi NBO - Kenya</option>
-<option>Tokyo HND - Japon</option>
-<option>Bangkok BKK - Thaïlande</option>
-<option>Moscow SVO - Russie</option>
-<option>Lisbonne LIS - Portugal</option>
-<option>Amsterdam AMS - Pays-Bas</option>
-<option>Genève GVA - Suisse</option>
-<option>Zurich ZRH - Suisse</option>
-<option>Vienne VIE - Autriche</option>
-
-</select>
-
-<!-- depart date -->
-<input type="date" id="departDate">
-
-<!-- return date -->
-<input type="date" id="returnDate">
-
-<!-- passengers -->
-<select id="passengers">
-<option>1 Passager</option>
-<option>2 Passagers</option>
-<option>3 Passagers</option>
-<option>4+ Passagers</option>
-</select>
-
-<!-- class -->
-<select id="travelClass">
-<option>Économique</option>
-<option>Business</option>
-</select>
-
-<button type="submit" class="search-btn">
-Rechercher un vol
-</button>
-
+<!-- SEARCH -->
+<div style="padding: 0 20px;">
+  <div class="search-section">
+    <div class="search-tabs">
+      <button class="search-tab active" onclick="setTab(this, 'vols')"><i class="fas fa-plane"></i> Billets d'avion</button>
+      <button class="search-tab" onclick="setTab(this, 'hotels')"><i class="fas fa-hotel"></i> Hôtels</button>
+      <button class="search-tab" onclick="setTab(this, 'voitures')"><i class="fas fa-car"></i> Voitures</button>
+      <button class="search-tab" onclick="setTab(this, 'assurance')"><i class="fas fa-shield-alt"></i> Assurance voyage</button>
+    </div>
+    <div class="search-form" id="searchForm">
+      <div class="form-group">
+        <label>Type de voyage</label>
+        <select>
+          <option>Aller-retour</option>
+          <option>Aller simple</option>
+          <option>Multi-destinations</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Passagers</label>
+        <select>
+          <option>1 Passager</option>
+          <option>2 Passagers</option>
+          <option>3 Passagers</option>
+          <option>4+ Passagers</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Classe</label>
+        <select>
+          <option>Économique</option>
+          <option>Affaires</option>
+          <option>Première classe</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>De</label>
+        <input type="text" value="Dakar (DKR)" placeholder="Ville de départ">
+      </div>
+      <div class="form-group">
+        <label>À</label>
+        <input type="text" value="Paris (PAR)" placeholder="Ville d'arrivée">
+      </div>
+      <div class="form-group">
+        <label>Départ</label>
+        <input type="date" value="2025-06-24">
+      </div>
+      <div class="form-group">
+        <label>Retour</label>
+        <input type="date" value="2025-07-01">
+      </div>
+      <button class="btn-search" onclick="searchFlight()"><i class="fas fa-search"></i> Rechercher un vol</button>
+    </div>
+  </div>
 </div>
 
-</form>
-
-</div>
-
-</section>
-
-<!-- ================= UPSELL MODAL ================= -->
-
-<section class="upsell-area" id="upsellArea">
-
-<div class="upsell-box hidden" id="step1">
-
-<h3>Besoin d’un transport ?</h3>
-
-<div class="choice-grid">
-
-<label><input type="checkbox" value="Taxi maison → Aéroport"> Taxi maison → Aéroport</label>
-
-<label><input type="checkbox" value="Chauffeur privé"> Chauffeur privé</label>
-
-<label><input type="checkbox" value="Location voiture destination"> Location voiture destination</label>
-
-</div>
-
-<div class="step-buttons">
-<button class="skip-btn nextBtn">Ignorer</button>
-<button class="gold-btn nextBtn">Continuer</button>
-</div>
-
-</div>
-
-<div class="upsell-box hidden" id="step2">
-
-<h3>Besoin d’un hôtel ?</h3>
-
-<div class="choice-grid">
-
-<label><input type="radio" name="hotel" value="Hôtel 3 étoiles"> Hôtel 3 étoiles</label>
-
-<label><input type="radio" name="hotel" value="Hôtel 4 étoiles"> Hôtel 4 étoiles</label>
-
-<label><input type="radio" name="hotel" value="Hôtel 5 étoiles"> Hôtel 5 étoiles</label>
-
-</div>
-
-<div class="step-buttons">
-<button class="skip-btn nextBtn">Ignorer</button>
-<button class="gold-btn nextBtn">Continuer</button>
-</div>
-
-</div>
-
-<div class="upsell-box hidden" id="step3">
-
-<h3>Ajouter bagage supplémentaire ?</h3>
-
-<div class="choice-grid">
-
-<label><input type="radio" name="bagage" value="Oui"> Oui</label>
-<label><input type="radio" name="bagage" value="Non"> Non</label>
-
-</div>
-
-<div class="step-buttons">
-<button class="gold-btn" id="finishBtn">Valider</button>
-</div>
-
-</div>
-
-</section>
-
-<!-- ================= SERVICES ================= -->
-
+<!-- SERVICES -->
 <section class="services" id="services">
-
-<h2 class="title">Nos Services</h2>
-
-<div class="cards">
-
-<div class="card">
-<i class="fas fa-plane"></i>
-<h3>Billets d’avion</h3>
-<p>Meilleurs prix disponibles.</p>
-</div>
-
-<div class="card">
-<i class="fas fa-hotel"></i>
-<h3>Hôtels</h3>
-<p>3 à 5 étoiles partout.</p>
-</div>
-
-<div class="card">
-<i class="fas fa-car"></i>
-<h3>Voitures</h3>
-<p>Transfert et location.</p>
-</div>
-
-<div class="card">
-<i class="fas fa-suitcase"></i>
-<h3>Bagages</h3>
-<p>Ajout bagages supplémentaires.</p>
-</div>
-
-</div>
-
+  <div class="container">
+    <div class="section-title">
+      <h2>Nos services</h2>
+      <div class="underline"></div>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="img-wrap">
+          <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=80" alt="Billets d'avion">
+          <div class="service-icon"><i class="fas fa-plane"></i></div>
+        </div>
+        <div class="service-body">
+          <h3>Billets d'avion</h3>
+          <p>Nous trouvons les meilleurs vols au meilleur prix vers toutes les destinations.</p>
+          <a href="#" class="link-more">En savoir plus →</a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="img-wrap">
+          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&q=80" alt="Hôtels">
+          <div class="service-icon"><i class="fas fa-hotel"></i></div>
+        </div>
+        <div class="service-body">
+          <h3>Réservation d'hôtels</h3>
+          <p>Des hôtels de qualité adaptés à tous les budgets partout dans le monde.</p>
+          <a href="#" class="link-more">En savoir plus →</a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="img-wrap">
+          <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=400&q=80" alt="Voitures">
+          <div class="service-icon"><i class="fas fa-car"></i></div>
+        </div>
+        <div class="service-body">
+          <h3>Location de voiture</h3>
+          <p>Voitures confortables avec ou sans chauffeur. Transfert aéroport inclus.</p>
+          <a href="#" class="link-more">En savoir plus →</a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="img-wrap">
+          <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=80" alt="Assurance">
+          <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
+        </div>
+        <div class="service-body">
+          <h3>Assurance voyage</h3>
+          <p>Voyagez en toute sécurité avec nos assurances adaptées à vos besoins.</p>
+          <a href="#" class="link-more">En savoir plus →</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- ================= DESTINATIONS ================= -->
-
+<!-- DESTINATIONS -->
 <section class="destinations" id="destinations">
-
-<div class="title-row">
-
-<h2 class="title left">Destinations populaires</h2>
-
-<a href="#" class="outline-btn">
-Voir toutes les destinations
-</a>
-
-</div>
-
-<div class="destination-list">
-
-<div class="destination-card">France</div>
-<div class="destination-card">Italie</div>
-<div class="destination-card">Maroc</div>
-<div class="destination-card">Espagne</div>
-<div class="destination-card">USA</div>
-<div class="destination-card">Canada</div>
-
-</div>
-
+  <div class="container">
+    <div class="destinations-header">
+      <h2>Destinations populaires</h2>
+      <a href="#" class="btn-voir">Voir toutes les destinations</a>
+    </div>
+    <div class="dest-grid">
+      <div class="dest-card">
+        <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=300&q=80" alt="France">
+        <div class="dest-flag">🇫🇷</div>
+        <div class="dest-info">
+          <h4>France</h4>
+          <p class="price">À partir de <span>280 000 FCFA</span></p>
+        </div>
+      </div>
+      <div class="dest-card">
+        <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=300&q=80" alt="Italie">
+        <div class="dest-flag">🇮🇹</div>
+        <div class="dest-info">
+          <h4>Italie</h4>
+          <p class="price">À partir de <span>310 000 FCFA</span></p>
+        </div>
+      </div>
+      <div class="dest-card">
+        <img src="https://images.unsplash.com/photo-1529655683826-aba9b3e77383?w=300&q=80" alt="Angleterre">
+        <div class="dest-flag">🇬🇧</div>
+        <div class="dest-info">
+          <h4>Angleterre</h4>
+          <p class="price">À partir de <span>320 000 FCFA</span></p>
+        </div>
+      </div>
+      <div class="dest-card">
+        <img src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=300&q=80" alt="Brésil">
+        <div class="dest-flag">🇧🇷</div>
+        <div class="dest-info">
+          <h4>Brésil</h4>
+          <p class="price">À partir de <span>450 000 FCFA</span></p>
+        </div>
+      </div>
+      <div class="dest-card">
+        <img src="https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=300&q=80" alt="Maroc">
+        <div class="dest-flag">🇲🇦</div>
+        <div class="dest-info">
+          <h4>Maroc</h4>
+          <p class="price">À partir de <span>120 000 FCFA</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- ================= CONTACT ================= -->
+<!-- FEATURES -->
+<section class="features">
+  <div class="container">
+    <div class="features-grid">
+      <div class="feature-item">
+        <div class="icon"><i class="fas fa-headset"></i></div>
+        <h4>Assistance 24h/24</h4>
+        <p>Nous sommes disponibles à tout moment pour vous aider dans votre voyage.</p>
+      </div>
+      <div class="feature-item">
+        <div class="icon"><i class="fas fa-lock"></i></div>
+        <h4>Paiement sécurisé</h4>
+        <p>Vos paiements sont 100% sécurisés et protégés par les meilleurs systèmes.</p>
+      </div>
+      <div class="feature-item">
+        <div class="icon"><i class="fas fa-tag"></i></div>
+        <h4>Meilleurs prix</h4>
+        <p>Nous vous garantissons les meilleurs tarifs du marché, sans frais cachés.</p>
+      </div>
+      <div class="feature-item">
+        <div class="icon"><i class="fas fa-users"></i></div>
+        <h4>Satisfaction client</h4>
+        <p>Des milliers de clients nous font confiance chaque jour pour leurs voyages.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-<footer class="footer" id="contact">
+<!-- WHY US -->
+<section class="why-us" id="why">
+  <div class="container">
+    <div class="why-inner">
+      <div class="why-img">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80" alt="Agent MTH Voyage">
+      </div>
+      <div class="why-title">
+        <h2>Pourquoi choisir MTH VOYAGE ?</h2>
+        <div class="why-points">
+          <div class="why-point"><i class="fas fa-check-circle"></i> Agence de voyage 100% sénégalaise</div>
+          <div class="why-point"><i class="fas fa-check-circle"></i> Service rapide et personnalisé</div>
+          <div class="why-point"><i class="fas fa-check-circle"></i> Partenaires fiables dans le monde entier</div>
+          <div class="why-point"><i class="fas fa-check-circle"></i> Accompagnement de A à Z</div>
+          <div class="why-point"><i class="fas fa-check-circle"></i> Plus de 1000 clients satisfaits</div>
+        </div>
+        <a href="#" class="btn-about">En savoir plus sur nous</a>
+      </div>
+      <div class="testimonial-box">
+        <div class="quote">"</div>
+        <p>MTH VOYAGE a organisé mon voyage de A à Z. Billet, hôtel, transfert et assurance. Service rapide et fiable. Je recommande !</p>
+        <div class="testimonial-author">
+          <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=80&q=80" alt="Aminata Fall">
+          <div>
+            <div class="name">Aminata Fall</div>
+            <div class="role">Cliente satisfaite</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<div class="footer-grid">
-
-<div>
-<img src="logo.png" class="footer-logo">
-<p>Votre partenaire voyage premium.</p>
+<!-- CTA -->
+<div class="cta-section" id="contact">
+  <h2>Prêt à voyager ?</h2>
+  <p>Contactez-nous maintenant et obtenez votre offre personnalisée</p>
+  <a href="https://wa.me/221771234567" class="btn-wa" target="_blank">
+    <i class="fab fa-whatsapp" style="font-size:1.2rem"></i> Demander une offre sur WhatsApp
+  </a>
 </div>
 
-<div>
-<h4>Contact</h4>
-<p>+221 78 563 58 06</p>
-<p>contact@mthvoyage.com</p>
-<p>Dakar - Sénégal</p>
-</div>
-
-<div>
-<h4>Services</h4>
-<p>Billets</p>
-<p>Hôtels</p>
-<p>Voitures</p>
-</div>
-
-</div>
-
-<div class="copy">
-© 2026 MTH VOYAGE
-</div>
-
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="logo">MTH<span style="color:var(--gold)">VOYAGE</span></a>
+      <p>MTH VOYAGE est votre partenaire de confiance pour tous vos voyages. Nous vous accompagnons de A à Z pour une expérience inoubliable.</p>
+      <div class="footer-socials">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-tiktok"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+    <div>
+      <h5>Liens utiles</h5>
+      <ul>
+        <li><a href="#">Accueil</a></li>
+        <li><a href="#">Billets d'avion</a></li>
+        <li><a href="#">Hôtels</a></li>
+        <li><a href="#">Voitures</a></li>
+        <li><a href="#">Assurance voyage</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Informations</h5>
+      <ul>
+        <li><a href="#">À propos de nous</a></li>
+        <li><a href="#">Conditions générales</a></li>
+        <li><a href="#">Politique de confidentialité</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-contact">
+      <h5>Contactez-nous</h5>
+      <p><i class="fas fa-phone"></i> +221 77 123 45 67</p>
+      <p><i class="fas fa-envelope"></i> contact@mthvoyage.com</p>
+      <p><i class="fas fa-map-marker-alt"></i> Sacré-Cœur 3, Dakar – Sénégal</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 MTH VOYAGE – Tous droits réservés.</span>
+    <span>Conçu avec <span style="color:#e25555">♥</span></span>
+  </div>
 </footer>
 
-<script src="script.js"></script>
+<script>
+  function toggleNav() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
 
+  function setTab(btn, type) {
+    document.querySelectorAll('.search-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    const form = document.getElementById('searchForm');
+    if (type === 'hotels') {
+      form.innerHTML = `
+        <div class="form-group"><label>Destination</label><input type="text" placeholder="Ville ou hôtel" value="Paris"></div>
+        <div class="form-group"><label>Arrivée</label><input type="date" value="2025-06-24"></div>
+        <div class="form-group"><label>Départ</label><input type="date" value="2025-07-01"></div>
+        <div class="form-group"><label>Chambres</label><select><option>1 chambre</option><option>2 chambres</option></select></div>
+        <div class="form-group"><label>Personnes</label><select><option>2 adultes</option><option>1 adulte</option><option>3 adultes</option></select></div>
+        <button class="btn-search" onclick="searchFlight()"><i class="fas fa-search"></i> Rechercher un hôtel</button>`;
+    } else if (type === 'voitures') {
+      form.innerHTML = `
+        <div class="form-group"><label>Lieu de prise en charge</label><input type="text" placeholder="Aéroport ou ville" value="Dakar"></div>
+        <div class="form-group"><label>Date de prise en charge</label><input type="date" value="2025-06-24"></div>
+        <div class="form-group"><label>Date de retour</label><input type="date" value="2025-07-01"></div>
+        <div class="form-group"><label>Type de véhicule</label><select><option>Économique</option><option>Confort</option><option>SUV</option><option>Luxe</option></select></div>
+        <button class="btn-search" onclick="searchFlight()"><i class="fas fa-search"></i> Rechercher une voiture</button>`;
+    } else if (type === 'assurance') {
+      form.innerHTML = `
+        <div class="form-group"><label>Destination</label><input type="text" placeholder="Pays de destination" value="France"></div>
+        <div class="form-group"><label>Date de départ</label><input type="date" value="2025-06-24"></div>
+        <div class="form-group"><label>Date de retour</label><input type="date" value="2025-07-01"></div>
+        <div class="form-group"><label>Nombre de voyageurs</label><select><option>1</option><option>2</option><option>3</option><option>4+</option></select></div>
+        <div class="form-group"><label>Type d'assurance</label><select><option>Standard</option><option>Premium</option><option>Tout risque</option></select></div>
+        <button class="btn-search" onclick="searchFlight()"><i class="fas fa-search"></i> Obtenir un devis</button>`;
+    } else {
+      form.innerHTML = `
+        <div class="form-group"><label>Type de voyage</label><select><option>Aller-retour</option><option>Aller simple</option><option>Multi-destinations</option></select></div>
+        <div class="form-group"><label>Passagers</label><select><option>1 Passager</option><option>2 Passagers</option><option>3 Passagers</option></select></div>
+        <div class="form-group"><label>Classe</label><select><option>Économique</option><option>Affaires</option><option>Première</option></select></div>
+        <div class="form-group"><label>De</label><input type="text" value="Dakar (DKR)"></div>
+        <div class="form-group"><label>À</label><input type="text" value="Paris (PAR)"></div>
+        <div class="form-group"><label>Départ</label><input type="date" value="2025-06-24"></div>
+        <div class="form-group"><label>Retour</label><input type="date" value="2025-07-01"></div>
+        <button class="btn-search" onclick="searchFlight()"><i class="fas fa-search"></i> Rechercher un vol</button>`;
+    }
+  }
+
+  function searchFlight() {
+    const wa = 'https://wa.me/221771234567?text=Bonjour%20MTH%20VOYAGE%2C%20je%20voudrais%20une%20offre%20de%20voyage.';
+    window.open(wa, '_blank');
+  }
+</script>
 </body>
 </html>
-
