@@ -415,7 +415,7 @@ footer{background:var(--dark);color:#8da8d4;padding:60px 20px 0;}
               <span id="paxLabel">1 Passager</span>
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
-            <div id="paxDropdown" style="display:none;position:absolute;top:calc(100% + 6px);right:0;background:white;border-radius:14px;box-shadow:0 8px 40px rgba(13,27,62,.15);border:1px solid #e8ecf5;padding:16px 20px;min-width:210px;z-index:300;">
+            <div id="paxDropdown" style="display:none;position:fixed;background:white;border-radius:14px;box-shadow:0 8px 40px rgba(13,27,62,.2);border:1px solid #e8ecf5;padding:16px 20px;min-width:210px;z-index:9999;">
               <div style="font-size:11px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">Nombre de passagers</div>
               <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
                 <div><div style="font-weight:600;font-size:14px;color:var(--navy);">Adultes</div><div style="font-size:11px;color:var(--gray);">12 ans et +</div></div>
@@ -807,7 +807,25 @@ let paxNum = 1;
 function togglePax(e) {
   if(e) e.stopPropagation();
   const d = document.getElementById('paxDropdown');
-  d.style.display = d.style.display === 'none' ? 'block' : 'none';
+  const btn = document.getElementById('paxBtn');
+  if(d.style.display === 'none' || d.style.display === '') {
+    const rect = btn.getBoundingClientRect();
+    const dropH = 160;
+    const spaceBelow = window.innerHeight - rect.bottom;
+    // Open above if not enough space below
+    if (spaceBelow < dropH + 10) {
+      d.style.top = (rect.top - dropH - 6) + 'px';
+    } else {
+      d.style.top = (rect.bottom + 6) + 'px';
+    }
+    // Align right edge with button, but clamp to viewport
+    let right = window.innerWidth - rect.right;
+    d.style.right = 'auto';
+    d.style.left = Math.max(8, Math.min(rect.left, window.innerWidth - 226)) + 'px';
+    d.style.display = 'block';
+  } else {
+    d.style.display = 'none';
+  }
 }
 function changePax(delta) {
   paxNum = Math.max(1, Math.min(9, paxNum + delta));
